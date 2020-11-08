@@ -1,22 +1,27 @@
 package org.fabi.impl;
 
-import org.fabi.exceptions.IdNonNullException;
-import org.fabi.exceptions.QuestionIdentiqueException;
-import org.fabi.exceptions.QuestionTailleMauvaise;
+import org.fabi.exceptions.*;
 import org.fabi.interfaces.Service;
 import org.fabi.modele.VDQuestion;
 import org.fabi.modele.VDVote;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class ServiceImplimentation implements Service {
 
-
+    private static Integer questionId = 0;
+    private static Integer voteId = 0;
     List<VDQuestion> listeDeQuestion = new ArrayList();
-    public void ajoutQuestion(VDQuestion question) throws IdNonNullException, QuestionIdentiqueException, QuestionTailleMauvaise {
+    List<VDVote> listeDeVote = new ArrayList();
 
+
+
+
+    public void ajoutQuestion(VDQuestion question) throws IdNonNullException, QuestionIdentiqueException, QuestionTailleMauvaise, QuestionNullException, ContenuIdentiqueException {
+        if (question == null || question.contenu == null)
+        {
+            throw new QuestionNullException();
+        }
         if (question.id != null) throw new IdNonNullException(); //si il possède déjà un id
         if (question.contenu.length() < 5 || question.contenu.length() > 255)
         {
@@ -28,22 +33,58 @@ public class ServiceImplimentation implements Service {
             {
                 throw new QuestionIdentiqueException();
             }
+            if (q.contenu.toLowerCase().equals(question.contenu.toLowerCase()))
+            {
+                throw new ContenuIdentiqueException();
+            }
+
         }
+        question.id = questionId++;
 
 
-
-        listeDeQuestion.add(question);
-
-    }
-
-
-    public void ajoutVote(VDVote vote) {
+        listeDeQuestion.add(question.id, question);
 
     }
 
 
-    public List<VDQuestion> questionsParNombreVotes() {
-        return null;
+    public void ajoutVote(VDVote vote) throws VoteNullException, IndiceTailleException, VoteDoubleException, QuestionNonTrouvableException {
+        if (vote == null || vote.nomVoteur == null)
+        {
+            throw new VoteNullException();
+        }
+        if (vote.indice > 5 || vote.indice < 0)
+        {
+            throw new IndiceTailleException();
+        }
+        int i = 0;
+        for ( i = 0; i < listeDeQuestion.size(); i++ )
+        {
+            if (listeDeQuestion.get(i).id == vote.questionId)
+            {
+                break;
+            }
+        }
+        if (i >= listeDeQuestion.size()){
+            throw new QuestionNonTrouvableException();
+        }
+        VDQuestion question = listeDeQuestion.get(i);
+        for (VDVote v : question.getListeDeVote())
+        {
+            if (v.nomVoteur.toLowerCase().compareTo(vote.nomVoteur.toLowerCase()) == 0)
+            {
+                throw new VoteDoubleException();
+            }
+        }
+        vote.id = voteId++;
+        listeDeQuestion.get(i).getListeDeVote().add(vote);
+    }
+
+
+    public List<VDQuestion> questionsParNombreVotes()
+    {
+        List<VDQuestion> listeQuestionCopie = listeDeQuestion;
+        Collections.sort(listeQuestionCopie);
+        return listeQuestionCopie;
     }
 
     public Map<Integer, Integer> distributionPour(VDQuestion question) {
