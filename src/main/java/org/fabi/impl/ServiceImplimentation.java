@@ -12,7 +12,7 @@ public class ServiceImplimentation implements Service {
     private static Integer questionId = 0;
     private static Integer voteId = 0;
     List<VDQuestion> listeDeQuestion = new ArrayList();
-    List<VDVote> listeDeVote = new ArrayList();
+
 
 
 
@@ -83,14 +83,44 @@ public class ServiceImplimentation implements Service {
     public List<VDQuestion> questionsParNombreVotes()
     {
         List<VDQuestion> listeQuestionCopie = listeDeQuestion;
-        Collections.sort(listeQuestionCopie);
+        Collections.sort(listeQuestionCopie); //compareTo a été @override dans VDQuestion pour que le sort fonctionne bien
         return listeQuestionCopie;
     }
 
     public Map<Integer, Integer> distributionPour(VDQuestion question) {
-        return null;
-    }
+        Map<Integer, Integer> distributionMap = new HashMap<Integer, Integer>();
+        Integer noteMax = 5;
+        Integer[] tab = new Integer[5];
+        tab[0] = 0;
+        tab[1] = 0;
+        tab[2] = 0;
+        tab[3] = 0;
+        tab[4] = 0;
+        for (VDVote v : question.ListeDeVote) {
+            switch (v.indice) {
+                case 1:
+                    tab[0]++;
+                    break;
+                case 2:
+                    tab[1]++;
+                    break;
+                case 3:
+                    tab[2]++;
+                    break;
+                case 4:
+                    tab[3]++;
+                    break;
+                case 5:
+                    tab[4]++;
+                    break;
+            }
 
+        }
+        for (int i = 0; i < noteMax; i++) {
+            distributionMap.put(i+1, tab[i]);
+        }
+        return distributionMap;
+    }
     public double moyennePour(VDQuestion question) {
         return 0;
     }

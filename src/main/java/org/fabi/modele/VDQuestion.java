@@ -53,6 +53,6 @@ public class VDQuestion  implements Comparable<VDQuestion>
                 {
                     return this.contenu.toLowerCase().compareTo(o.contenu.toLowerCase());
                 }
-         return -(this.getListeDeVote().size() - o.getListeDeVote().size());
+         return -(this.getListeDeVote().size() - o.getListeDeVote().size());// la soustraction montre le contraire de l'ordre croissant,
     }
 }
