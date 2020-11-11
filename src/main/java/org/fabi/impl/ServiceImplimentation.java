@@ -31,10 +31,11 @@ public class ServiceImplimentation implements Service {
             }
 
         }
+        //l'id est donné par la méthode en commençant par un id de 0 et ensuite ++
         question.setId(questionId);
         questionId++;
 
-        listeDeQuestion.add(question.getId(), question);
+        listeDeQuestion.add(question.getId(), question); // je rajoute la question à l'index de son id
 
     }
 
@@ -92,7 +93,7 @@ public class ServiceImplimentation implements Service {
             tab[v.getIndice() - 1]++;
         }
         for (int i = 0; i < noteMax; i++) {
-            distributionMap.put(i+1, tab[i]);
+            distributionMap.put(i+1, tab[i]); //Ajouter les donnés dans le HashMap
         }
         return distributionMap;
     }
@@ -128,7 +129,7 @@ public class ServiceImplimentation implements Service {
 
     }
 
-    public double calculET(double tab[])
+    private double calculET(double tab[]) //Elle est privée car je l'ai inventé pour que ça soit plus simple pour moi
     {
         double somme = 0.0, ecartType = 0.0;
         int taille = tab.length;
@@ -147,6 +148,6 @@ public class ServiceImplimentation implements Service {
 
     }
     public String nomEtudiant() {
-        return null;
+        return "Fabi Benjamin";
     }
 }

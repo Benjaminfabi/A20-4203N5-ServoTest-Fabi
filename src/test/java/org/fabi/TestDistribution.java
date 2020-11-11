@@ -13,6 +13,7 @@ import java.util.Map;
 public class TestDistribution
 {
     @Test
+    //Je créé des votes avec différents indices pour ensuite calculer la distribution à partir d'une question
     public void TestDistribution() throws VoteDoubleException, VoteNullException, IndiceTailleException, QuestionNonTrouvableException, ContenuIdentiqueException, IdNonNullException, QuestionTailleMauvaise, QuestionNullException, QuestionIdentiqueException {
         Service service = new ServiceImplimentation();
         VDQuestion question = new VDQuestion("Quelle est la question?");

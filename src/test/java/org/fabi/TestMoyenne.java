@@ -11,6 +11,7 @@ import org.junit.Test;
 public class TestMoyenne
 {
     @Test
+    //Création de vote sur une question qui doit être égal à 3 de moyenne
     public void TestMoyenne() throws VoteDoubleException, VoteNullException, IndiceTailleException, QuestionNonTrouvableException, ContenuIdentiqueException, IdNonNullException, QuestionTailleMauvaise, QuestionNullException, QuestionIdentiqueException, QuestionAucunVoteException {
         Service service = new ServiceImplimentation();
         VDQuestion question = new VDQuestion("Quelle est la question?");
