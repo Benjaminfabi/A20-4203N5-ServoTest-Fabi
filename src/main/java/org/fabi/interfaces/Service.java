@@ -15,9 +15,9 @@ public interface Service {
 
     Map<Integer, Integer> distributionPour(VDQuestion question);
 
-    double moyennePour(VDQuestion question);
+    double moyennePour(VDQuestion question) throws QuestionAucunVoteException;
 
-    double ecartTypePour(VDQuestion question);
+    double ecartTypePour(VDQuestion question) throws QuestionAucunVoteException;
 
     String nomEtudiant();
 }

@@ -33,8 +33,8 @@ public class TestVote
         Service service = new ServiceImplimentation();
         VDQuestion question = new VDQuestion("contenu");
         service.ajoutQuestion(question);
-        VDVote voteMaude = new VDVote(question.id, "Maude",3);
-        VDVote votemaude = new VDVote(question.id,"maude",3);
+        VDVote voteMaude = new VDVote(question.getId(), "Maude",3);
+        VDVote votemaude = new VDVote(question.getId(),"maude",3);
         service.ajoutVote(voteMaude);
         service.ajoutVote(votemaude);
     }
@@ -50,8 +50,8 @@ public class TestVote
         Service service = new ServiceImplimentation();
         VDQuestion question = new VDQuestion("TESTQUESTION");
         service.ajoutQuestion(question);
-        VDVote vote = new VDVote(question.id, "maude",3);
+        VDVote vote = new VDVote(question.getId(), "maude",3);
         service.ajoutVote(vote);
-        Assert.assertEquals(1, question.ListeDeVote.size());
+        Assert.assertEquals(1, question.getListeDeVote().size());
     }
 }

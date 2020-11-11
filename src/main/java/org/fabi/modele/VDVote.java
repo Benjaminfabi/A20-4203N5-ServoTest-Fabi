@@ -2,16 +2,19 @@ package org.fabi.modele;
 
 public class VDVote
 {
-    public Integer id;
-    public String nomVoteur;
-    public Integer questionId;
-    public Integer indice;
+    private Integer id;
+    private String nomVoteur;
+    private Integer questionId;
+    private Integer indice;
     public VDVote()
     {
 
     }
 
 
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public void setQuestionId(Integer questionId) {
         this.questionId = questionId;

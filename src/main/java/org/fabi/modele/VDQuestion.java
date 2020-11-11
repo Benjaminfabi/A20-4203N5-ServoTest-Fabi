@@ -4,9 +4,9 @@ import java.util.*;
 
 public class VDQuestion  implements Comparable<VDQuestion>
 {
-    public Integer id;
-    public String contenu;
-    public List<VDVote> ListeDeVote;
+    private Integer id;
+    private String contenu;
+    private List<VDVote> ListeDeVote;
     public VDQuestion()
     {
 
@@ -15,10 +15,22 @@ public class VDQuestion  implements Comparable<VDQuestion>
     public void setListeDeVote(List<VDVote> listeDeVote) {
         this.ListeDeVote = listeDeVote;
     }
-
-
     public List<VDVote> getListeDeVote() {
         return ListeDeVote;
+    }
+
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+    public Integer getId() {
+        return id;
+    }
+
+
+
+    public String getContenu() {
+        return contenu;
     }
 
     public void setContenu(String contenu) {

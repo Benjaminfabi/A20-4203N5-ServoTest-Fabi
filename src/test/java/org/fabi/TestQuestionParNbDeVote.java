@@ -36,7 +36,7 @@ public class TestQuestionParNbDeVote
         String resultat = "";
         for (VDQuestion q : service.questionsParNombreVotes())
         {
-            resultat += "Nombre de votes : " + q.ListeDeVote.size() + " " + q.contenu + " ";
+            resultat += "Nombre de votes : " + q.getListeDeVote().size() + " " + q.getContenu() + " ";
         }
         Assert.assertEquals("Nombre de votes : 3 AAAAA Nombre de votes : 2 JJJJJ Nombre de votes : 2 kkkkk ", resultat);
     }
