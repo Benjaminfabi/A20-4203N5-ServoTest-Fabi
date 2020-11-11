@@ -7,10 +7,6 @@ public class VDQuestion  implements Comparable<VDQuestion>
     private Integer id;
     private String contenu;
     private List<VDVote> ListeDeVote;
-    public VDQuestion()
-    {
-
-    }
 
     public void setListeDeVote(List<VDVote> listeDeVote) {
         this.ListeDeVote = listeDeVote;
@@ -19,7 +15,6 @@ public class VDQuestion  implements Comparable<VDQuestion>
         return ListeDeVote;
     }
 
-
     public void setId(Integer id) {
         this.id = id;
     }
@@ -27,16 +22,17 @@ public class VDQuestion  implements Comparable<VDQuestion>
         return id;
     }
 
-
-
     public String getContenu() {
         return contenu;
     }
-
     public void setContenu(String contenu) {
         this.contenu = contenu;
     }
+    public VDQuestion()
+    {
 
+    }
+    //Constructeur
     public VDQuestion(String contenu) {
         setContenu(contenu);
         ListeDeVote = new ArrayList();
@@ -44,7 +40,6 @@ public class VDQuestion  implements Comparable<VDQuestion>
 
 
     }
-
 
     @Override
     public boolean equals(Object o) {

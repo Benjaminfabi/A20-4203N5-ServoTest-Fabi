@@ -10,7 +10,7 @@ import org.junit.Test;
 
 public class TestEcartType
 {
-    //Assert Equals avec l'exemple de l ''enoncé du TP
+    //Assert Equals avec l'exemple de l'énoncé du TP
     @Test
     public void TestEcartType() throws VoteDoubleException, VoteNullException, IndiceTailleException, QuestionNonTrouvableException, ContenuIdentiqueException, IdNonNullException, QuestionTailleMauvaise, QuestionNullException, QuestionIdentiqueException, QuestionAucunVoteException
         {

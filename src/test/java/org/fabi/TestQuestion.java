@@ -19,7 +19,7 @@ public class TestQuestion
     }
     @Test(expected = IdNonNullException.class)
     public void IdNonNull() throws IdNonNullException, QuestionIdentiqueException, QuestionTailleMauvaise, QuestionNullException, ContenuIdentiqueException {
-
+        //On set l'id pour qu'il soit non null lors de sa création. Expected : IdNonNullException()
         Service service = new ServiceImplimentation();
         VDQuestion question = new VDQuestion("Allo");
         question.setId(12);
@@ -43,23 +43,6 @@ public class TestQuestion
         VDQuestion questionBBB = new VDQuestion("BBBBB");
         service.ajoutQuestion(questionbbb);
         service.ajoutQuestion(questionBBB);
-    }
-    @Test
-    public void ListeSize1() throws ContenuIdentiqueException, IdNonNullException, QuestionTailleMauvaise, QuestionNullException, QuestionIdentiqueException {
-        Service service = new ServiceImplimentation();
-        VDQuestion questionbbb = new VDQuestion("bbbbb");
-        VDQuestion questionBBB = new VDQuestion("BBBdBB");
-        VDQuestion question3 = new VDQuestion("BBBawdawdBB");
-        VDQuestion question4 = new VDQuestion("BBdddBBB");
-        VDQuestion question5 = new VDQuestion("BBafgsrgBBB");
-        VDQuestion question6 = new VDQuestion("BhgfdBBBB");
-        service.ajoutQuestion(question3);
-        service.ajoutQuestion(question4);
-        service.ajoutQuestion(question5);
-        service.ajoutQuestion(question6);
-        service.ajoutQuestion(questionbbb);
-        service.ajoutQuestion(questionBBB);
-
     }
 
 

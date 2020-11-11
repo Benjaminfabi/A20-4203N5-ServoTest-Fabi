@@ -11,6 +11,13 @@ public class VDVote
 
     }
 
+    public VDVote(Integer questionId, String nomVoteur, Integer indice)
+    {
+        setIndice(indice);
+        setNomVoteur(nomVoteur);
+        setQuestionId(questionId);
+
+    }
 
     public void setId(Integer id) {
         this.id = id;
@@ -22,12 +29,14 @@ public class VDVote
     public Integer getQuestionId() {
         return questionId;
     }
+
     public String getNomVoteur() {
         return nomVoteur;
     }
     public void setNomVoteur(String nomVoteur) {
         this.nomVoteur = nomVoteur;
     }
+
     public Integer getIndice() {
         return indice;
     }
@@ -35,13 +44,6 @@ public class VDVote
         this.indice = indice;
     }
 
-    public VDVote(Integer questionId, String nomVoteur, Integer indice)
-    {
-        setIndice(indice);
-        setNomVoteur(nomVoteur);
-        setQuestionId(questionId);
-
-    }
 
 
 }
